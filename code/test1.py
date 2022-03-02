@@ -9,3 +9,7 @@ for i in range(1,3):
 
 # for i in phoneMac:
 #     print("%s:%s:%s:%s:%s:%s"%(i[90: 92], i[92: 94],i[95: 97], i[97: 99], i[100: 102],i[102: 104]))
+
+
+# 0000 1a00 2f48 0000 XXXX XXXX 0000 0000 0002 8509 a000 XXXX 0000
+#                     Mac       timestamp                antenna signal
