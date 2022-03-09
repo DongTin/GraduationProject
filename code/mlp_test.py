@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 # Hyper Parameters
 import pylab
 
-EPOCH = 5              # !!!
+EPOCH = 2              # !!!
 BATCH_SIZE = 50         # !!!
 LR = 0.001              # learning rate !!!
 DOWNLOAD_MNIST = False
