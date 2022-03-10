@@ -19,11 +19,11 @@ python 3.8
 │  │  conversion.py
 │  │  dataDeal.ipynb
 │  │  getMacModel.py
+│  │  getTestData.py
+│  │  getTrainData.py
+│  │  mlp_ConversionMacAddress.py
 │  │  mlp_test.py
-│  │  mnist_model-checkpoint.ipynb
-│  │  test1.py
-│  │  test2.py  
-│  ├─.ipynb_checkpoints     
+│  │  mnist_model-checkpoint.ipynb   
 │  └─mnist                  
 ├─data                                //原始数据
 │      MacModels.txt
@@ -45,4 +45,10 @@ python 3.8
 
     > 参考论文：[*Probe Request Based Device Identification Attack and Defense*](https://github.com/DongTin/GraduationProject/blob/main/paper/Probe%20Request%20Based%20Device%20Identification%20Attack%20and%20Defense.pdf)
 - **2022-03-10 21:07:25**     输出numpy&tag数据以及mlp框架梳理
-- 
+- **2022-03-11 03:04:50**     完成了mlp输入数据格式转化、针对mac地址去随机的mlp的初步构建
+
+#### BUG LIST
+- [ ]  getTestData无法跨文件获取数据
+
+#### OPTIMIZE LIST
+- [ ]  conversion的数据转化归一流程太慢

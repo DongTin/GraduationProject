@@ -1,6 +1,3 @@
-import numpy as np
-
-
 # 格式转化和归一化
 # input:datas数据 output:归一化的400维list[1*400]
 def ConversionAndNormalization(inputStr):
@@ -11,6 +8,7 @@ def ConversionAndNormalization(inputStr):
     for x in range(0, len(inputStr) - 1):
         temp0.append(inputStr[x])
     temp0 = [i for i in temp0 if i != ' ']
+    temp0 = [i for i in temp0 if i != ',']
     # print(len(temp0))
     bytesSize = 400
     while len(temp0) < bytesSize:

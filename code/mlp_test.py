@@ -86,7 +86,6 @@ for epoch in range(EPOCH):
     # step:第几个数据 b_x:输入数据  b_y:数据标签
     for step, (b_x, b_y) in enumerate(train_loader):   # gives batch data, normalize x when iterate train_loader
         # print(b_x.size())
-
         b_x = b_x.view(-1, 28*28)
         # print(b_x.size())
 
