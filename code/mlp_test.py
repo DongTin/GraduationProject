@@ -1,5 +1,3 @@
-# library
-# standard library
 import os
 
 # third-party library
@@ -14,7 +12,7 @@ import matplotlib.pyplot as plt
 # Hyper Parameters
 import pylab
 
-EPOCH = 2              # !!!
+EPOCH = 1               # !!!
 BATCH_SIZE = 50         # !!!
 LR = 0.001              # learning rate !!!
 DOWNLOAD_MNIST = False
@@ -29,7 +27,7 @@ train_data = torchvision.datasets.MNIST(
     root='./mnist/',
     train=True,                                     # this is training data
     transform=torchvision.transforms.ToTensor(),    # Converts a PIL.Image or numpy.ndarray to
-                                                    # torch.FloatTensor of shape (C x H x W) and
+                                                    # torch.FloatTensor of shape (C * H * W) and
                                                     # normalize in the range [0.0, 1.0] 归一化
     download=DOWNLOAD_MNIST,
 )
@@ -46,7 +44,8 @@ train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffl
 
 # pick 2000 samples to speed up testing
 test_data = torchvision.datasets.MNIST(root='./mnist/', train=False)
-test_x = torch.unsqueeze(test_data.data, dim=1).type(torch.FloatTensor)[:2000]/255.   # shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)
+# shape from (2000, 28, 28) to (2000, 1, 28, 28), value in range(0,1)
+test_x = torch.unsqueeze(test_data.data, dim=1).type(torch.FloatTensor)[:2000]/255.
 test_y = test_data.targets[:2000]
 
 
@@ -54,8 +53,9 @@ class MLP(nn.Module):
     def __init__(self):
         super(MLP, self).__init__()
         self.mlp = nn.Sequential(
-            nn.Linear(28*28, 28*28),
-            nn.Linear(28*28, 10)
+            nn.Linear(28 * 28, 28 * 28),
+            nn.Linear(28 * 28, 28 * 28),
+            nn.Linear(28 * 28, 10)
         )
 
     def forward(self, x):
@@ -83,15 +83,21 @@ loss_func = nn.CrossEntropyLoss()                       # the target label is no
 # plt.ion()
 # training and testing
 for epoch in range(EPOCH):
+    # step:第几个数据 b_x:输入数据  b_y:数据标签
     for step, (b_x, b_y) in enumerate(train_loader):   # gives batch data, normalize x when iterate train_loader
         # print(b_x.size())
+
         b_x = b_x.view(-1, 28*28)
         # print(b_x.size())
 
         output = mlp(b_x)[0]               # logistic output
         loss = loss_func(output, b_y)   # cross entropy loss
+        # 梯度清零
         optimizer.zero_grad()           # clear gradients for this training step
+        # 反向传播
         loss.backward()                 # backpropagation, compute gradients
+        # https://blog.csdn.net/qq_41468616/article/details/121244698
+        # 执行一次优化步骤，通过梯度下降法来更新参数的值
         optimizer.step()                # apply gradients
 
         if step % 50 == 0:

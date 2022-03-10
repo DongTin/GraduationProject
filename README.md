@@ -44,3 +44,5 @@ python 3.8
 - **2022-03-09 18:08:07**     输入格式处理和数据归一化
 
     > 参考论文：[*Probe Request Based Device Identification Attack and Defense*](https://github.com/DongTin/GraduationProject/blob/main/paper/Probe%20Request%20Based%20Device%20Identification%20Attack%20and%20Defense.pdf)
+- **2022-03-10 21:07:25**     输出numpy&tag数据以及mlp框架梳理
+- 

@@ -1,11 +1,8 @@
 import numpy as np
 
 
-# 0000 1a00 2f48 0000 a836 99c8 0000 0000 0002 8509 a000 e400 0000 4000 0000 ffff ffff ffff daa1 19e3 7fab ffff ffff
-# ffff b0eb 0000 0104 0204 0b16 3208 0c12 1824 3048 606c 0301 082d 1a6e 0103 ff00 0000 0000 0000 0000 0000 0000 0000
-# 0000 0000 0000 00dd 0700 50f2 0800 0000 ,2
-
 # 格式转化和归一化
+# input:datas数据 output:归一化的400维list[1*400]
 def ConversionAndNormalization(inputStr):
     inputStr = inputStr[0: -2]
     temp0 = []
@@ -59,7 +56,7 @@ str0 = "0000 1a00 2f48 0000 3c16 4601 0000 0000 0002 8509 a000 b200 0000 4000 00
 #         num += 1
 #     file0.close()
 
-print('list: %s' % ConversionAndNormalization(str0))
-print(len(ConversionAndNormalization(str0)))
-print(ConversionAndNormalization(str0))
-print(type(ConversionAndNormalization(str0)))
+# print('list: %s' % ConversionAndNormalization(str0))
+# print(len(ConversionAndNormalization(str0)))
+# print(ConversionAndNormalization(str0))
+# print(type(ConversionAndNormalization(str0)))
