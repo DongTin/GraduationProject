@@ -47,7 +47,7 @@ python 3.8
     > 参考论文：[*Probe Request Based Device Identification Attack and Defense*](https://github.com/DongTin/GraduationProject/blob/main/paper/Probe%20Request%20Based%20Device%20Identification%20Attack%20and%20Defense.pdf)
 - **2022-03-10 21:07:25**     输出*numpy&tag*数据以及*mlp*框架梳理
 - **2022-03-11 03:04:50**     完成了*mlp*输入数据格式转化、针对*mac*地址去随机的*mlp*的初步构建
-  - **2022-03-12 03:11:26**     修改*bug*、实现针对*mac*地址去随机的*mlp*并且训练15轮后准确率在81%以上
+- **2022-03-12 03:11:26**     修改*bug*、实现针对*mac*地址去随机的*mlp*并且训练15轮后准确率在81%以上
 
 #### *BUG LIST*
 - [x]  *getTestData*无法跨文件获取数据
