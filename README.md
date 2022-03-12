@@ -18,13 +18,14 @@ python 3.8
 ├─code
 │  │  conversion.py
 │  │  dataDeal.ipynb
+│  │  fileDataStatistics.py
 │  │  getFileName.py
 │  │  getMacModel.py
 │  │  getTestData.py
 │  │  getTrainData.py
 │  │  mlp_ConversionMacAddress.py
 │  │  mlp_test.py
-│  │  mnist_model-checkpoint.ipynb  
+│  │  mnist_model-checkpoint.ipynb
 │  └─mnist                  
 ├─data                                //原始数据
 │      MacModels.txt
@@ -32,6 +33,7 @@ python 3.8
 │      raw_dataset_label.zip    
 ├─datas                               //拆分后的数据
 ├─paper                               //论文
+├─picture                             //可视化图像
 └─README.md                           //help
 ```
 #### 项目进度
