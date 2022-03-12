@@ -6,7 +6,7 @@ import getFileName as gFN
 
 
 # 要求：1-43文件中前80%的全部数据
-def getTensorData():
+def getAllData():
     out = []
     with tqdm(range(1, 44), desc='ReadingTrainDatas ', leave=True, position=0) as t:
         for i in t:

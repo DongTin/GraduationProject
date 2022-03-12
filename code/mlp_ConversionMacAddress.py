@@ -40,11 +40,11 @@ scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=10, gamma=0.1)
 loss_func = nn.CrossEntropyLoss()  # the target label is not one-hotted
 
 tqdm.write("训练集文件读取".center(100 // 2, "-"))
-train_data = getTrainData.getTensorData()
+train_data = getTrainData.getAllData()
 train_loader = data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE, shuffle=True)
 tqdm.write("读取完成".center(100 // 2, "-") + '\n')
 tqdm.write("测试集文件读取".center(100 // 2, "-"))
-data, targets = getTestData.getTensorData(TestDatasNum)
+data, targets = getTestData.getRandomData(TestDatasNum)
 test_x = torch.unsqueeze(data, dim=1).type(torch.FloatTensor)[:TestDatasNum]
 test_y = targets[:TestDatasNum]
 tqdm.write("读取完成".center(100 // 2, "-") + '\n')

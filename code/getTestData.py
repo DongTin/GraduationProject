@@ -7,7 +7,7 @@ import getFileName as gFN
 
 
 # 要求：1-43文件中随机选择文件抽取后20%的随机一条累计n条
-def getTensorData(dataNum):
+def getRandomData(dataNum):
     data = np.empty([0, 1, 400], float)
     targets = np.empty(0, int)
     with tqdm(range(0, dataNum), desc='ReadingTestDatas ', leave=True, position=0) as t:
