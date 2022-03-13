@@ -16,17 +16,16 @@ python 3.8
 ```
 .
 ├─code
-│  │  conversion.py
-│  │  dataDeal.ipynb
-│  │  fileDataStatistics.py
+│  │  conversion.py                   //数据格式转化与归一化处理
+│  │  dataDeal.ipynb                  //原始数据分类处理
+│  │  fileDataStatistics.py           //数据文件情况可视化
 │  │  getFileName.py
-│  │  getMacModel.py
-│  │  getTestData.py
-│  │  getTrainData.py
-│  │  mlp_ConversionMacAddress.py
-│  │  mlp_test.py
-│  │  mnist_model-checkpoint.ipynb
-│  └─mnist                  
+│  │  getMacModel.py                  //统一Mac地址模型
+│  │  getTestData.py                  //获取测试数据
+│  │  getTrainData.py                 //获取训练数据
+│  │  mlp_ConversionMacAddress.py     //mlp主函数
+│  │  showAccuracy.py                 //准确率可视化
+│  └─ showLoss.py                     //损失率可视化        
 ├─data                                //原始数据
 │      MacModels.txt
 │      raw_dataset_label.txt
@@ -38,7 +37,7 @@ python 3.8
 ```
 #### 项目进度
 
-- **2022-02-12 20:16:17**    [*raw_dataset_label.txt*](https://github.com/DongTin/GraduationProject/blob/main/data/raw_dataset_label.txt)原始数据处理 
+- **2022-02-12 20:16:17**    [*raw_dataset_label.txt*](https://github.com/DongTin/GraduationProject/blob/main/data/raw_dataset_label.txt) 原始数据处理 
 
 - **2022-03-01 12:10:11**     *MacModels*存储（统一模型）  
 
@@ -51,11 +50,12 @@ python 3.8
 - **2022-03-11 03:04:50**     完成了*mlp*输入数据格式转化、针对*mac*地址去随机的*mlp*的初步构建
 - **2022-03-12 03:11:26**     修改*bug*、实现针对*mac*地址去随机的*mlp*并且训练15轮后准确率在81%以上
 - **2022-03-12 17:53:32**     数据详情的可视化
-- **2022-03-13 02:08:31**     根据[*MacModels.txt*](https://github.com/DongTin/GraduationProject/blob/main/data/MacModels.txt)对输入格式进行调整准确率达到了97%以上、开始论文准备工作
+- **2022-03-13 02:08:31**     ~~根据[*MacModels.txt*](https://github.com/DongTin/GraduationProject/blob/main/data/MacModels.txt) 对输入格式进行调整准确率达到了97%以上、~~ 开始论文准备工作
+- **2022-03-14 01:46:06**     实现*loss*与*accuracy*的可视化
 
 #### *BUG LIST*
 - [x]  *getTestData*无法跨文件获取数据
 
 #### *OPTIMIZE LIST*
-- [x] *mlp*准确率优化
+- [ ] *mlp*准确率优化
 - [ ]  ~~*conversion*的数据转化归一流程速度优化~~(多线程尝试后结果不理想 暂且搁置)
