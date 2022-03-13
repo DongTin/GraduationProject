@@ -1,9 +1,12 @@
 import torch
 import torch.nn as nn
 import torch.utils.data as data
+from tqdm import tqdm
 import getTrainData
 import getTestData
-from tqdm import tqdm
+import showLoss
+import showAccuracy
+import time
 
 EPOCH = 15  # !!!
 BATCH_SIZE = 50  # !!!
@@ -17,17 +20,21 @@ class MLP(nn.Module):
         self.mlp = nn.Sequential(
             # 全连接层的设置
             # 三个全连接层 43个手机所以最后输出结果为43个点
-            nn.Linear(1 * 400, 1 * 400),
-            nn.Linear(1 * 400, 1 * 400),
-            nn.Linear(1 * 400, 44)
+            nn.Linear(1 * 400, 1 * 256),
+            # 为了防止过拟合添加dropout层
+            nn.Dropout(0.3),
+            nn.Linear(1 * 256, 1 * 128),
+            nn.Dropout(0.3),
+            nn.Linear(1 * 128, 44)
         )
 
     def forward(self, x):
-        output = self.mlp(x)
+        outputs = self.mlp(x)
         # return x for visualization
-        return output, x
+        return outputs, x
 
 
+start = time.time()
 mlp = MLP()
 # net architecture
 print(mlp)
@@ -48,20 +55,14 @@ data, targets = getTestData.getRandomData(TestDatasNum)
 test_x = torch.unsqueeze(data, dim=1).type(torch.FloatTensor)[:TestDatasNum]
 test_y = targets[:TestDatasNum]
 tqdm.write("读取完成".center(100 // 2, "-") + '\n')
-# print(test_x)
-# print(type(test_x))
-# print(test_x.shape)
-# print(test_y)
 
+loss_history = []
+accuracy_history = []
 # 导入数据 开始训练
 for epoch in range(EPOCH):
     # step:第几个数据 b_x:输入数据  b_y:数据标签
     for step, (b_x, b_y) in enumerate(train_loader):  # gives batch data, normalize x when iterate train_loader
-        # print(b_x.size())
-        # print(b_x)
-        # print(type(b_x))
         b_x = b_x.view(-1, 1 * 400)
-        # print(b_x.size())
 
         output = mlp(b_x)[0]  # logistic output
         loss = loss_func(output, b_y)  # cross entropy loss
@@ -77,18 +78,18 @@ for epoch in range(EPOCH):
             test_output, last_layer = mlp(test_x.view(-1, 1 * 400))
             pred_y = torch.max(test_output, 1)[1].data.numpy()
             accuracy = float((pred_y == test_y.data.numpy()).astype(int).sum()) / float(test_y.size(0))
+            if step % 2000 == 0:
+                loss_history.append(loss.data.numpy())
+                accuracy_history.append(accuracy)
             print('Epoch: ', epoch + 1, '| train loss: %.4f' % loss.data.numpy(), '| test accuracy: %.2f' % accuracy)
-            # if HAS_SK:
-            #     # Visualization of trained flatten layer (T-SNE)
-            #     tsne = TSNE(perplexity=30, n_components=2, init='pca', n_iter=5000)
-            #     plot_only = 500
-            #     low_dim_embs = tsne.fit_transform(last_layer.data.numpy()[:plot_only, :])
-            #     labels = test_y.numpy()[:plot_only]
-            #     plot_with_labels(low_dim_embs, labels)
     scheduler.step()
-# plt.ioff()
+
 
 test_output, _ = mlp(test_x[:10].view(-1, 1 * 400))
 pred_y = torch.max(test_output, 1)[1].data.numpy()
 print('prediction phone : ', pred_y)
 print('real phone       : ', test_y[:10].numpy())
+showLoss.show(loss_history)
+showAccuracy.show(accuracy_history)
+end = time.time()
+print("运行时间:%.2f秒" % (end - start))

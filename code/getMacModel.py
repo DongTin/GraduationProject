@@ -55,10 +55,3 @@ with open("../data/MacModels.txt", "w") as f:
     #         temp1[i: i + 4] = "____"
     #     MacModel = ''.join(temp1)
     # print('\n' + MacModel)
-
-
-
-
-    # 0000 1a00 2f48 0000 574e b360 0000 0000 0002 8509 a000 e000 0000 4000 0000 ffff ffff ffff daa1 1940 034e ffff ffff
-    # ffff 00ca 0000 0104 0204 0b16 3208 0c12 1824 3048 606c 0301 062d 1a6e 0103 ff00 0000 0000 0000 0000 0000 0000 0000
-    # 0000 0000 0000 00dd 0700 50f2 0800 0000 7f05 0000 0a02 01

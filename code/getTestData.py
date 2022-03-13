@@ -36,7 +36,6 @@ def getRandomData(dataNum):
     t.close()
     return data, targets
 
-# tqdm.write("测试集文件读取".center(100 // 2, "-"))
 # data, targets = getTensorData(5)
 # print(data)
 # print(data.shape)

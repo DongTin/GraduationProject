@@ -41,8 +41,7 @@ def getAllData():
     return out
 
 
-# tqdm.write("训练集文件读取".center(100 // 2, "-"))
-# for step, out in enumerate(outData):
+# for step, out in enumerate(getAllData()):
 #     print('step:', end='')
 #     print(step + 1)
-#     # print(out)
+#     print(out[1])

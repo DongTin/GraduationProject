@@ -1,7 +1,8 @@
 # 格式转化和归一化
 # input:datas数据 output:归一化的400维list[1*400]
 def ConversionAndNormalization(inputStr):
-    inputStr = inputStr[20: 30] + inputStr[40: 45] + inputStr[65:]
+    # inputStr = inputStr[20: 30] + inputStr[40: 45] + inputStr[50: 55] + inputStr[65: -2]
+    inputStr = inputStr[0: -2]
     temp0 = []
     temp1 = []
     # 格式转化
@@ -27,8 +28,6 @@ def ConversionAndNormalization(inputStr):
     # inputStr = ''.join(temp0)
     # print(inputStr)
     # print(len(inputStr))
-
-    # print(output)
 
     return temp1
 
